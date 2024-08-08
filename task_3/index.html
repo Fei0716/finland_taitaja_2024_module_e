@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task 3</title>
+
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form action="#" method="post" id="form-name">
+    <label for="name">Enter A Prefix For Your Username</label>
+    <input type="text" name="name" id="name" required>
+    <button type="submit">Generate</button>
+    <button type="reset">Reset</button>
+</form>
+<h1 id="generated-name"></h1>
+<button id="btn-share" class="hide">Copy to Clipboard</button>
+<script src="./username_generator/suffixes.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded' ,function(){
+        let generatedName = '';
+        document.querySelector('#form-name').addEventListener('submit', function(e){
+            e.preventDefault();
+            generate();
+            document.querySelector('button[type="reset"]').click();
+        });
+
+        async function copyCode() {
+            try {
+                await navigator.clipboard.writeText(this.input);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        document.querySelector('#btn-share').addEventListener('click',function(){
+           navigator.clipboard.writeText(generatedName);
+           alert('The username has been copied.');
+        });
+        function generate(){
+            generatedName = document.querySelector('#name').value + suffixes[Math.floor(Math.random() * suffixes.length) + 1];
+            document.querySelector('#generated-name').innerHTML = generatedName;
+            document.querySelector('#btn-share').classList.remove('hide');
+        }
+
+    });
+</script>
+</body>
+</html>

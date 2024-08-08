@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pancake Order Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-container">
+        <img src="pancake.jpeg" alt="Delicious pancakes" />
+        <div class="price-banner"><span id="totalPrice">5€</span></div>
+      </div>
+      <div class="form-container">
+        <h2>Customize Your Pancake Order</h2>
+        <div class="customization-section">
+          <label for="type">Choose pancake style:</label>
+          <select id="type">
+            <option value="5">Classic - 5€</option>
+            <option value="6">Chocolate - 6€</option>
+            <option value="7">Blueberry - 7€</option>
+          </select>
+        </div>
+        <div class="customization-section">
+          <p>Choose toppings (1€ each):</p>
+          <div>
+            <input
+              type="checkbox"
+              id="nuts"
+              value="1"
+              name="order_toppings"
+              data-name="Nuts"
+              data-category="toppings"
+            />
+            <label for="nuts">Nuts</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="bananas"
+              value="2"
+              data-name="Bananas"
+              name="order_toppings"
+              data-category="toppings"
+            />
+            <label for="bananas">Bananas</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="syrup"
+              value="3"
+              data-name="Syrup"
+              name="order_toppings"
+
+              data-category="toppings"
+            />
+            <label for="syrup">Syrup</label>
+          </div>
+        </div>
+        <div class="customization-section">
+          <p>Extras:</p>
+          <div>
+            <input
+              type="checkbox"
+              id="whippedCream"
+              value="2"
+              data-name="Whipped Cream"
+              data-category="extras"
+              name="order_extras"
+
+            />
+            <label for="whippedCream">Whipped Cream - 2€</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              id="iceCream"
+              value="3"
+              data-name="Ice Cream"
+              data-category="extras"
+              name="order_extras"
+
+            />
+            <label for="iceCream">Ice Cream - 3€</label>
+          </div>
+        </div>
+        <div>
+          <h3>Your Details</h3>
+          <div>
+            <label for="customerName">Name</label>
+            <input type="text" id="customerName" />
+          </div>
+          <button>Place Order</button>
+        </div>
+        <div class="order">
+          <p>Type: <span id="order_type"></span></p>
+          <p>Toppings: <span id="order_toppings"></span></p>
+          <p>Extras: <span id="order_extras"></span></p>
+          <p>Name: <span id="order_name"></span></p>
+          <p>Price: <span id="order_price"></span></p>
+        </div>
+        <a href="manage.html">Go to Order Management</a>
+      </div>
+    </div>
+    <script src="pancake.js"></script>
+  </body>
+</html>

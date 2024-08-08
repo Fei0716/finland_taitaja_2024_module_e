@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .hide{
+            display: none;
+        }
+        label{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time: <span id="time">0</span></h1>
+    <label for="input">Start Typing Here</label>
+    <textarea rows="10" cols="100" id="input"></textarea>
+
+    <div class="hide" id="result">
+         <h2>WPM:<em id="wpm"></em>&nbsp;&nbsp; Time Elapsed<em>60</em>s</h2>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded' ,function(){
+        let timer = null;
+        let timeCount = 0;
+        let hasStarted = false;
+        let wordCount = 0;
+        const timerDOM = document.querySelector('#time');
+        const wpmDOM = document.querySelector('#wpm');
+        const resultDOM = document.querySelector('#result');
+        document.querySelector('#input').addEventListener('keypress', function(){
+            if(!hasStarted){
+                timer = setInterval(()=>{
+                    timeCount++;
+                    timerDOM.innerHTML = timeCount.toString();
+                    if(timeCount === 60){
+                        clearInterval(timer);
+                        endGame();
+                    }
+                },1000);
+                hasStarted = true;
+            }
+            wordCount++;
+        })
+
+        function endGame(){
+            let wpm = (wordCount / 5);
+            wpmDOM.innerHTML = wpm.toString();
+            resultDOM.classList.remove('hide');
+        }
+    });
+</script>
+</body>
+</html>
